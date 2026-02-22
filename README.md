@@ -1,59 +1,132 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📚 Alexandria Digital Library  
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**Alexandria Digital Library** adalah aplikasi perpustakaan digital berbasis web  
+yang memudahkan pengguna dalam **mengakses, meminjam, dan mengelola buku secara online**.  
 
-## About Laravel
+Aplikasi ini dirancang untuk meningkatkan efisiensi layanan perpustakaan  
+melalui sistem yang **modern, terstruktur, dan terintegrasi**.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🎯 Tujuan  
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1. Mempermudah pengelolaan data buku secara digital.  
+2. Mengoptimalkan proses peminjaman dan pengembalian buku.  
+3. Mengurangi pencatatan manual yang rentan kesalahan.  
+4. Menyediakan laporan data yang rapi dan otomatis.  
+5. Mendukung transformasi perpustakaan menuju sistem digital.  
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## 🚀 Fitur Utama  
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 👥 User  
+- Registrasi / Daftar  
+- Login / Masuk  
+- Melihat daftar buku 
+- Menyimpan buku
+- Cari & filter buku  
+- Melakukan peminjaman buku  
+- Melihat status peminjaman  
+- Melihat riwayat peminjaman
+- Memberikan Ulasan buku
+- Ubah profil  
+- Ubah email / password  
+- Logout  
 
-## Laravel Sponsors
+### 🛡️ Admin / Petugas  
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+#### 🔹 Admin
+- Login Admin  
+- Dashboard  
+- Manajemen data buku (tambah, edit, hapus)
+- Persetujuan / penolakan publikasi buku
+- Manajemen kategori buku (tambah, edit, hapus)  
+- Menambahkan akun petugas  
+- Manajemen user  
+- Persetujuan / penolakan peminjaman  
+- Pengelolaan pengembalian buku  
+- Cetak laporan peminjaman  
+- Cetak laporan pengembalian  
+- Logout  
 
-### Premium Partners
+#### 🔹 Petugas
+- Login Petugas  
+- Dashboard
+- Manajemen data buku (tambah, edit, hapus)
+- Melihat data user
+- Persetujuan / penolakan peminjaman  
+- Pengelolaan pengembalian buku  
+- Cetak laporan peminjaman  
+- Cetak laporan pengembalian  
+- Logout  
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
+## 🛠️ Tech Stack  
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- **Backend** : Laravel 10 (PHP, MVC)  
+- **Frontend** : Blade + Tailwind CSS  
+- **Database** : MySQL  
 
-## Code of Conduct
+**Tools**:  
+- 🎨 Figma (UI/UX Design)  
+- 🛠️ GitHub (Version Control)  
+- 💻 XAMPP (PHP & MySQL)  
+- 📊 Draw.io / Creately (Diagram)  
+- 📄 Google Docs (Dokumentasi)  
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## 🏅 Keunggulan Aplikasi  
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- **Digital & Terintegrasi** → Semua data buku dan transaksi tersimpan otomatis.  
+- **Efisien** → Mempercepat proses peminjaman dan pengembalian.  
+- **Laporan Otomatis** → Data laporan dapat dicetak dengan mudah.  
+- **User Friendly** → Tampilan sederhana dan mudah digunakan.  
+- **Role Management** → Hak akses berbeda untuk user dan admin.  
+- **Mengurangi Kesalahan Manual** → Tidak lagi menggunakan pencatatan buku fisik.  
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## ⚡ Cara Install  
+
+```bash
+# 1. Clone repository
+git clone https://github.com/username/alexandria-digital-library.git
+cd alexandria-digital-library
+
+# 2. Install dependency
+composer install
+
+# 3. Konfigurasi environment
+cp .env.example .env
+php artisan key:generate
+
+# 4. Migrasi database
+php artisan migrate
+
+# 5. Jalankan server lokal
+php artisan serve
+
+---
+
+## 👨‍💻 Developer  
+
+**Zulfah Putri Aulia Hani**  
+Project Individu – Fullstack Developer  
+
+---
+
+## 🏫 Identitas Project  
+
+- 📘 **Mata Pelajaran / Kelas** : Pemrograman Web (PW) – Kelas XI RPL  
+- 🏫 **Sekolah** : SMK Negeri 1 Gunungputri  
+- 📂 **Jenis Project** : Individu  
+
+---
+
+## 📜 Lisensi  
+
+All Rights Reserved.  
+Project ini dibuat untuk keperluan tugas dan tidak diperkenankan untuk digunakan, disalin, atau dimodifikasi tanpa izin pemilik.  
