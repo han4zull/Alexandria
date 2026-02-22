@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug localStorage Tab</title>
+</head>
+<body>
+    <h1>Debug localStorage untuk Tab Manajemen Buku</h1>
+    <button onclick="checkStorage()">Check Current localStorage</button>
+    <button onclick="clearStorage()">Clear localStorage</button>
+    <button onclick="setAktif()">Set to 'aktif'</button>
+    <button onclick="setProses()">Set to 'proses'</button>
+    <button onclick="setSelesai()">Set to 'selesai'</button>
+    <div id="result"></div>
+
+    <script>
+        function checkStorage() {
+            const saved = localStorage.getItem('manajemenBukuActiveTab');
+            document.getElementById('result').innerHTML = 'Current localStorage: "' + (saved || 'null') + '"';
+        }
+
+        function clearStorage() {
+            localStorage.removeItem('manajemenBukuActiveTab');
+            checkStorage();
+        }
+
+        function setAktif() {
+            localStorage.setItem('manajemenBukuActiveTab', 'aktif');
+            checkStorage();
+        }
+
+        function setProses() {
+            localStorage.setItem('manajemenBukuActiveTab', 'proses');
+            checkStorage();
+        }
+
+        function setSelesai() {
+            localStorage.setItem('manajemenBukuActiveTab', 'selesai');
+            checkStorage();
+        }
+
+        // Check on load
+        checkStorage();
+    </script>
+</body>
+</html>

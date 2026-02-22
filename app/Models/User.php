@@ -2,47 +2,57 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
+    // **ini yang bikin Laravel pakai tabel "user"**
+    protected $table = 'user';
+    public $timestamps = false;
+
+    // Set guard untuk guard 'web'
+    protected $guard = 'web';
+
     protected $fillable = [
-        'name',
+        'username',
         'email',
         'password',
+        'role',
+        'no_anggota',
+        'tanggal_bergabung',
+        'poin',
+        'nama_lengkap',
+        'alamat',
+        'nomer_hp',
+        'foto_profil',
+        'jenis_kelamin',
+        'status',
     ];
+    
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
+
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+    // Relasi ke saved books
+    public function savedBooks()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->belongsToMany(Buku::class, 'saved_books', 'user_id', 'buku_id')->withTimestamps();
+    }
+
+    // Relasi ke peminjaman
+    public function peminjaman()
+    {
+        return $this->hasMany(Peminjaman::class, 'user_id');
     }
 }

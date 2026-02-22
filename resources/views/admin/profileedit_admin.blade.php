@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Admin</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; background: radial-gradient(circle at top, #f6f1ea, #e2d3c1); }
+    .judul { font-family: 'Poppins', sans-serif }
+  </style>
+</head>
+<body class="text-[#3e2a1f]">
+
+<div class="min-h-screen flex gap-6 p-6">
+
+  {{-- SIDEBAR --}}
+  @include('admin.layout.sidebar')
+
+  {{-- MAIN --}}
+  <main class="flex-1 bg-[#faf6ee]/90 rounded-3xl p-10 shadow-xl">
+
+    @section('page-icon')
+    <svg class="w-6 h-6 text-[#8b6f47]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+    </svg>
+    @endsection
+
+    @section('page-title')
+    Edit Admin
+    @endsection
+
+    @include('admin.layout.header')
+
+    <form action="{{ route('profile_admin.update') }}"
+          method="POST"
+          enctype="multipart/form-data"
+          class="space-y-6"
+          autocomplete="off">
+      @csrf
+      @method('PUT')
+
+      <!-- NAMA -->
+      <div>
+        <label class="block text-sm font-medium mb-2">Nama Lengkap</label>
+        <input type="text" name="nama" required autocomplete="off"
+               value="{{ old('nama', $admin->nama) }}"
+               class="w-full px-4 py-3 rounded-xl border border-[#e2d3c1] shadow
+                      focus:ring-2 focus:ring-[#c9a44c] focus:outline-none">
+      </div>
+
+      <!-- EMAIL -->
+      <div>
+        <label class="block text-sm font-medium mb-2">Email</label>
+        <input type="email" name="email" required autocomplete="off"
+               value="{{ old('email', $admin->email) }}"
+               class="w-full px-4 py-3 rounded-xl border border-[#e2d3c1] shadow
+                      focus:ring-2 focus:ring-[#c9a44c] focus:outline-none">
+      </div>
+
+      <!-- FOTO PROFIL -->
+      <div>
+        <label class="block text-sm font-medium mb-2">Foto Profil</label>
+        <div class="flex flex-col gap-3">
+
+          <div id="frame" class="w-48 h-48 border-2 border-dashed border-[#c9a44c] rounded-xl overflow-hidden bg-[#f3eee6] relative">
+            <img id="previewFoto" class="absolute top-0 left-0 cursor-grab"
+                 src="{{ $admin->foto_profil ? asset('storage/'.$admin->foto_profil) : '' }}"
+                 alt="Preview Foto"
+                 @if(!$admin->foto_profil) hidden @endif>
+            <span id="placeholderIcon" class="absolute inset-0 flex items-center justify-center text-xs text-[#7a5c45]"
+                  @if($admin->foto_profil) style="display:none;" @endif>
+              Preview
+            </span>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <label class="text-sm text-[#7a5c45]">Zoom</label>
+            <input id="zoomSlider" type="range" min="1" max="3" step="0.05" value="1"
+                   class="flex-1" oninput="zoomImage(this.value)">
+          </div>
+
+          <input type="file"
+                 name="foto_profil"
+                 accept="image/*"
+                 onchange="previewImage(event)"
+                 class="px-4 py-3 rounded-xl border border-[#e2d3c1] bg-white shadow focus:ring-2 focus:ring-[#c9a44c] focus:outline-none">
+          <p class="text-xs text-[#7a5c45] mt-1">JPG / PNG • Maks 2MB</p>
+        </div>
+      </div>
+
+      <!-- PASSWORD (kosong = tidak diubah) -->
+      <div class="relative">
+        <label class="block text-sm font-medium mb-2">Password Baru</label>
+        <input id="password" type="password" name="password" autocomplete="new-password"
+               class="w-full px-4 py-3 rounded-xl border border-[#e2d3c1] shadow focus:ring-2 focus:ring-[#c9a44c] focus:outline-none pr-12"
+               placeholder="Kosongkan jika tidak ingin mengubah password">
+        <button type="button" onclick="togglePassword()"
+                class="absolute right-3 top-1/2 -translate-y-1/2 text-[#7a5c45]">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+               viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- JENIS KELAMIN -->
+      <div>
+        <label class="block text-sm font-medium mb-2">Jenis Kelamin</label>
+        <select name="jenis_kelamin" required class="w-full px-4 py-3 rounded-xl border border-[#e2d3c1] shadow focus:ring-2 focus:ring-[#c9a44c] focus:outline-none">
+          <option value="">-- Pilih --</option>
+          <option value="L" @if($admin->jenis_kelamin == 'L') selected @endif>Laki-laki</option>
+          <option value="P" @if($admin->jenis_kelamin == 'P') selected @endif>Perempuan</option>
+        </select>
+      </div>
+
+      <!-- BUTTON -->
+      <div class="flex justify-end gap-3 pt-6">
+        <a href="{{ route('profile_admin') }}"
+           class="px-6 py-3 rounded-xl border border-[#c9a44c] text-[#7a5c45] hover:bg-[#efe5d3] transition">
+          Batal
+        </a>
+        <button type="submit"
+                class="px-8 py-3 bg-gradient-to-br from-[#c9a44c] to-[#8a6a3f] text-white rounded-xl shadow-lg hover:scale-[1.03] transition">
+          Perbarui Admin
+        </button>
+      </div>
+    </form>
+
+  </main>
+</div>
+
+<script>
+  let currentScale = 1;
+  let posX = 0;
+  let posY = 0;
+  let dragging = false;
+  let startX, startY;
+
+  function previewImage(event) {
+    const img = document.getElementById('previewFoto');
+    const placeholder = document.getElementById('placeholderIcon');
+    const slider = document.getElementById('zoomSlider');
+
+    const file = event.target.files[0];
+    if (!file) return;
+
+    img.src = URL.createObjectURL(file);
+    img.hidden = false;
+    placeholder.style.display = 'none';
+
+    currentScale = 1;
+    slider.value = 1;
+    posX = 0;
+    posY = 0;
+
+    img.style.transform = `translate(${posX}px, ${posY}px) scale(${currentScale})`;
+  }
+
+  function zoomImage(value) {
+    const img = document.getElementById('previewFoto');
+    currentScale = value;
+    img.style.transform = `translate(${posX}px, ${posY}px) scale(${currentScale})`;
+  }
+
+  const img = document.getElementById('previewFoto');
+  const frame = document.getElementById('frame');
+
+  frame.addEventListener('mousedown', (e) => {
+    if (img.hidden) return;
+    dragging = true;
+    startX = e.clientX;
+    startY = e.clientY;
+    img.style.cursor = 'grabbing';
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (!dragging) return;
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+    startX = e.clientX;
+    startY = e.clientY;
+    posX += dx;
+    posY += dy;
+    img.style.transform = `translate(${posX}px, ${posY}px) scale(${currentScale})`;
+  });
+
+  window.addEventListener('mouseup', () => {
+    dragging = false;
+    img.style.cursor = 'grab';
+  });
+
+  function togglePassword() {
+    const pw = document.getElementById('password');
+    pw.type = pw.type === 'password' ? 'text' : 'password';
+  }
+</script>
+
+</body>
+</html>

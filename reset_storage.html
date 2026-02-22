@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reset localStorage</title>
+</head>
+<body>
+    <h1>Reset localStorage untuk Tab Manajemen Buku</h1>
+    <button onclick="resetStorage()">Reset localStorage</button>
+    <button onclick="checkStorage()">Check localStorage</button>
+    <div id="result"></div>
+
+    <script>
+        function resetStorage() {
+            localStorage.removeItem('manajemenBukuActiveTab');
+            document.getElementById('result').innerHTML = 'localStorage direset!';
+        }
+
+        function checkStorage() {
+            const saved = localStorage.getItem('manajemenBukuActiveTab');
+            document.getElementById('result').innerHTML = 'Current localStorage: ' + (saved || 'null');
+        }
+    </script>
+</body>
+</html>
