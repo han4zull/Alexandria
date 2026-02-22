@@ -1,6 +1,6 @@
-# 📚 Alexandria Digital Library  
+# 📚 Alexandria
 
-**Alexandria Digital Library** adalah aplikasi perpustakaan digital berbasis web  
+**Alexandria** adalah aplikasi perpustakaan digital berbasis web  
 yang memudahkan pengguna dalam **mengakses, meminjam, dan mengelola buku secara online**.  
 
 Aplikasi ini dirancang untuk meningkatkan efisiensi layanan perpustakaan  
@@ -93,8 +93,8 @@ melalui sistem yang **modern, terstruktur, dan terintegrasi**.
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/username/alexandria-digital-library.git
-cd alexandria-digital-library
+git clone https://github.com/username/alexandria.git
+cd alexandria
 
 # 2. Install dependency
 composer install
