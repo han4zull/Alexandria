@@ -134,6 +134,8 @@ Project ini dibuat untuk keperluan tugas dan tidak diperkenankan untuk digunakan
 atau dimodifikasi tanpa izin pemilik.  
 
 
+Hak cipta © 2026 – Alexandria Digital Library  
+
 
 
 
