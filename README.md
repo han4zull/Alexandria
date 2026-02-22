@@ -129,4 +129,10 @@ Project Individu – Fullstack Developer
 ## 📜 Lisensi  
 
 All Rights Reserved.  
-Project ini dibuat untuk keperluan tugas dan tidak diperkenankan untuk digunakan, disalin, atau dimodifikasi tanpa izin pemilik.  
+Project ini dibuat untuk keperluan tugas dan tidak diperkenankan untuk digunakan, disalin,
+atau dimodifikasi tanpa izin pemilik.  
+
+
+
+
+
